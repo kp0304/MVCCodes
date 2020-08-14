@@ -87,8 +87,9 @@ namespace Practice1.Controllers
             {
                 student.StudentId = id;
                 // TODO: Add update logic here
-                if(student.StudentId <= counter)
+                if(student.StudentId <= counter && ModelState.IsValid)
                 {
+
                     for (int i = 0; i < studentList.Count; i++)
                     {
                         Student s = studentList.ElementAt(i);

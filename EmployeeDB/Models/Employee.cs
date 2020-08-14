@@ -11,7 +11,8 @@ namespace EmployeeDB.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Employee
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,18 +22,32 @@ namespace EmployeeDB.Models
         }
     
         public int Number { get; set; }
+        [DisplayFormat(NullDisplayText = "No Manager")]
+        [Required]
         public string Name { get; set; }
+        [Required]
         public decimal Salary { get; set; }
+        [Required]
         public decimal Commission { get; set; }
+        [Required]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public System.DateTime DateOfJoining { get; set; }
+        [Required]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public System.DateTime DateOfBirth { get; set; }
+        [Required]
+        [Range(1, int.MaxValue, ErrorMessage ="Select a Department")]
         public int DepartmentNo { get; set; }
+        [Required]
+        [Display(Name = "Job Title")]
         public string JobTitle { get; set; }
         public Nullable<int> ReportingTo { get; set; }
-    
         public virtual Department Department { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Employee> Employees1 { get; set; }
+        [Display(Name = "Reporting To")]
         public virtual Employee Employee1 { get; set; }
     }
 }

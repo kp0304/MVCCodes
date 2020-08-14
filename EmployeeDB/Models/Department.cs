@@ -24,6 +24,7 @@ namespace EmployeeDB.Models
         public int DepartmentID { get; set; }
         [Required]
         [MaxLength(255)]
+        [Display(Name = "Department")]
         public string Name { get; set; }
         [Required]
         [MaxLength(255)]
